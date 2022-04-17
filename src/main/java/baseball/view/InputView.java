@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.utils.MessageUtil;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -8,10 +9,9 @@ public class InputView {
     }
 
     public static int inputBallsNumber() {
-        System.out.println("숫자를 입력해주세요");
+        System.out.print(MessageUtil.numberInputMessage);
 
         String ballsNumber = Console.readLine();
-
 
         return Integer.parseInt(ballsNumber);
     }
