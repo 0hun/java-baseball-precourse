@@ -1,6 +1,9 @@
 package baseball.validator;
 
 import baseball.utils.MessageUtil;
+import java.util.List;
+import java.util.Set;
+import org.assertj.core.util.Sets;
 
 public class Validator {
 
@@ -24,6 +27,14 @@ public class Validator {
         boolean isNumeric =  value.matches("[+-]?\\d*(\\.\\d+)?");
         if (!isNumeric) {
             throw new IllegalArgumentException(MessageUtil.VALIDATE_NUMBER_MESSAGE);
+        }
+    }
+
+    public static void validateEqualNumbers(List<Integer> ballNumbers) {
+        Set<Integer> ballNumberSet = Sets.newHashSet(ballNumbers);
+
+        if (ballNumberSet.size() != ballNumbers.size()) {
+            throw new IllegalArgumentException(MessageUtil.VALIDATE_DUPLICATION_MESSAGE);
         }
     }
 }

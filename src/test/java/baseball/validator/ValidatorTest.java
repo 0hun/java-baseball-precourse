@@ -3,6 +3,9 @@ package baseball.validator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -92,6 +95,36 @@ public class ValidatorTest {
         // when
         Throwable thrown = catchThrowable(() -> {
             Validator.validateNumber(value);
+        });
+
+        // then
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("3자리의 숫자가 중복값이 없는지 테스트")
+    @Test
+    void validateEqualNumbers() {
+        // given
+        List<Integer> ballsNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
+
+        // when
+        Throwable thrown = catchThrowable(() -> {
+            Validator.validateEqualNumbers(ballsNumber);
+        });
+
+        // then
+        assertThat(thrown).isEqualTo(null);
+    }
+
+    @DisplayName("3자리의 숫자가 중복값이 있을 경우 에러가 발생하는지 테스트")
+    @Test
+    void validateEqualNumbersWithError() {
+        // given
+        List<Integer> ballsNumber = new ArrayList<>(Arrays.asList(1, 2, 2));
+
+        // when
+        Throwable thrown = catchThrowable(() -> {
+            Validator.validateEqualNumbers(ballsNumber);
         });
 
         // then

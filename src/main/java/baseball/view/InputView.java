@@ -30,6 +30,8 @@ public class InputView {
             ballNumbers.add(Integer.parseInt(value));
         }
 
+        Validator.validateEqualNumbers(ballNumbers);
+
         return ballNumbers;
     }
 
