@@ -1,10 +1,10 @@
 package baseball;
 
-import baseball.view.InputView;
-import java.util.List;
+import baseball.controller.BallGame;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> ballNumbers = InputView.inputBallsNumber();
+        BallGame ballGame = new BallGame();
+        ballGame.play();
     }
 }

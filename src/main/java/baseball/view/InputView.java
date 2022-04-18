@@ -35,4 +35,8 @@ public class InputView {
         return ballNumbers;
     }
 
+    public static String inputRetryNumber() {
+        return Console.readLine();
+    }
+
 }
