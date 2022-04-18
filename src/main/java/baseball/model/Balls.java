@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Balls {
 
-    private final List<Integer> ballsNumber;
+    private final List<Ball> balls;
 
-    public Balls(List<Integer> ballsNumber) {
-        this.ballsNumber = ballsNumber;
+    public Balls(List<Ball> balls) {
+        this.balls = balls;
     }
 
-    public List<Integer> getBallsNumber() {
-        return ballsNumber;
+    public List<Ball> getBalls() {
+        return balls;
     }
 }

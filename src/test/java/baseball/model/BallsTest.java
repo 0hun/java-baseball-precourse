@@ -17,23 +17,23 @@ public class BallsTest {
         List<Integer> ballsNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
 
         // when
-        Balls balls = new Balls(ballsNumber);
+        Balls balls = BallsFactory.makeBalls(ballsNumber);
 
         // then
         assertThat(balls).isNotNull();
     }
 
-    @DisplayName("3개의 정수를 입력했을때, Balls 객체가 가진 숫자가 입력한 숫자와 동일한지 테스트")
+    @DisplayName("3개의 정수를 입력했을때, Balls 객체가 가진 Ball 객체 사이즈가 입력한 3개의 정수와 길이가 같은지 테스트")
     @Test
     void createBallsWithEqualNumber() {
         // given
         List<Integer> ballsNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
 
         // when
-        Balls balls = new Balls(ballsNumber);
+        Balls balls = BallsFactory.makeBalls(ballsNumber);
 
         // then
-        assertThat(balls.getBallsNumber()).isEqualTo(ballsNumber);
+        assertThat(balls.getBalls().size()).isEqualTo(ballsNumber.size());
     }
 
 }
