@@ -36,4 +36,52 @@ public class BallsTest {
         assertThat(balls.getBalls().size()).isEqualTo(ballsNumber.size());
     }
 
+    @DisplayName("Balls 객체 비교하여 결과가 1Strike인지 테스트")
+    @Test
+    void strikeTest() {
+        // given
+        List<Integer> ballsNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<Integer> computerBallsNumber = new ArrayList<>(Arrays.asList(1, 4, 5));
+        Balls balls = BallsFactory.makeBalls(ballsNumber);
+        Balls computerBalls = BallsFactory.makeBalls(computerBallsNumber);
+
+        // when
+        BallResult ballResult = balls.match(computerBalls);
+
+        // then
+        assertThat(ballResult.getStrike()).isEqualTo(1);
+    }
+
+    @DisplayName("Balls 객체 비교하여 결과가 1ball, 1Strike인지 테스트")
+    @Test
+    void ballAndStrikeTest() {
+        // given
+        List<Integer> ballsNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<Integer> computerBallsNumber = new ArrayList<>(Arrays.asList(1, 3, 5));
+        Balls balls = BallsFactory.makeBalls(ballsNumber);
+        Balls computerBalls = BallsFactory.makeBalls(computerBallsNumber);
+
+        // when
+        BallResult ballResult = balls.match(computerBalls);
+
+        // then
+        assertThat(ballResult.isNothing()).isFalse();
+    }
+
+    @DisplayName("Balls 객체 비교하여 결과가 1ball, 1Strike인지 테스트")
+    @Test
+    void nothingTest() {
+        // given
+        List<Integer> ballsNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<Integer> computerBallsNumber = new ArrayList<>(Arrays.asList(4, 5, 6));
+        Balls balls = BallsFactory.makeBalls(ballsNumber);
+        Balls computerBalls = BallsFactory.makeBalls(computerBallsNumber);
+
+        // when
+        BallResult ballResult = balls.match(computerBalls);
+
+        // then
+        assertThat(ballResult.isNothing()).isTrue();
+    }
+
 }
